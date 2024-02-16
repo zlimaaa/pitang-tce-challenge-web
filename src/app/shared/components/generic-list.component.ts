@@ -31,7 +31,7 @@ export abstract class GenericListComponent<T extends GenericModel>
         this.page = response;
         this.resources = response.content;
       },
-      error: (error) => toastr.error(error.error.message),
+      error: this.handleError.bind(this),
     });
   }
 
@@ -48,10 +48,25 @@ export abstract class GenericListComponent<T extends GenericModel>
             (element) => element != resource
           );
         },
-        error: (error) => toastr.error(error.error.message),
+        error: this.handleError.bind(this),
       });
     }
   }
+
+  private handleError(error: any) {
+
+    if(error.statusText == 'Unknown Error') {
+        toastr.error("Falha ao conectar com o servidor")
+    }else if(error.status == '500'){
+        toastr.error("Falha interna do servidor")
+    }else if(error.status == '403' || error.status == '401') {
+      toastr.error("Unauthorized")
+    }else {
+      toastr.error(error.error.message)
+    }
+      
+  }
+
 
   nextPage() {
     if (!this.page.last) {

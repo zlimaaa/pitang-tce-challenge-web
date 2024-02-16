@@ -47,8 +47,22 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(login).subscribe({
       next: () => this.router.navigate(['users']),
-      error: (error) => toastr.error(error.error.message),
+      error: this.handleError.bind(this),
     });
+  }
+
+  private handleError(error: any) {
+
+    if(error.statusText == 'Unknown Error') {
+        toastr.error("Falha ao conectar com o servidor")
+    }else if(error.status == '500'){
+        toastr.error("Falha interna do servidor")
+    }else if(error.status == '403' || error.status == '401') {
+      toastr.error("Unauthorized")
+    }else {
+      toastr.error(error.error.message)
+    }
+      
   }
 
   private checkAndRedirectIfHasUserLoggedIn() {
