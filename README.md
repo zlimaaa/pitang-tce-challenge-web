@@ -2,26 +2,34 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
+## Install dependencies
+
+Run `npm install` for donwloading dependencies.
+
+
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run  `ng serve` or  `node serve.js` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## API links
 
-## Running end-to-end tests
+HEROKU: https://pitang-tce-api-51bcd86fe773.herokuapp.com/swagger-ui.html </br>
+GITHUB: https://github.com/zlimaaa/pitang-tce-challenge </br>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Frontend links
+HEROKU: https://pitang-tce-web-29e64535a365.herokuapp.com/</br>
+GITHUB: https://github.com/zlimaaa/pitang-tce-challenge-web </br>
+SHORTENED: https://bit.ly/pitang-tce
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Contats
+
+[LinkedIn](https://www.linkedin.com/in/zlimaa)
+[GitHub](https://github.com/zlimaaa)
+[Email](ricardolima.dev@gmail.com)
