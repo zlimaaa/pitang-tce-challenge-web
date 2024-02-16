@@ -1,0 +1,103 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container">
+    <form>
+        <div class="card">
+            <div class="card-header">
+                Informações do usuário
+            </div>
+
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="firstName">Nome</label>
+                        <input [readOnly]="true" type="text" class="form-control" id="firstName"
+                            [value]="user.firstName">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="lastName">Sobrenome</label>
+                        <input [readOnly]="true" type="text" class="form-control" id="lastName"
+                            [value]="user.lastName">                       
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="birthDate">Data de Nascimento</label>
+                        <input [readOnly]="true" type="text" class="form-control" id="birthDate"
+                         mask="00/00/000" [value]="user.birthDate">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="email">Email</label>
+                        <input [readOnly]="true" type="text" class="form-control" id="email"
+                            [value]="user.email">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="phone">Celular</label>
+                        <input [readOnly]="true" type="text" class="form-control" id="phone"
+                            [value]="user.phone" mask="(00)0 0000-0000" placeholder="(81) 9 9999-9999">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="login">Login</label>
+                        <input [readOnly]="true" type="text" class="form-control" id="login"
+                            [value]="user.login">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="createdAt">Data de Criação</label>
+                        <input [readOnly]="true" type="text" class="form-control" id="createdAt"
+                        mask="d0/M0/0000 Hh:m0:s0" [value]="user.createdAt">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="lastLogin">Data do Ultimo Login</label>
+                        <input [readOnly]="true" type="text" class="form-control" id="lastLogin"
+                        mask="d0/M0/0000 Hh:m0:s0" [value]="user.lastLogin">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                Carros do usuário
+            </div>
+            <div class="card-body">
+                <p-table [value]="user.cars == undefined? []: user.cars" [paginator]="true" [rows]="4">
+                    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                        <tr>
+                            <td class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="carModel">Modelo</label>
+                                    <input [readOnly]="true" type="text" class="form-control"
+                                        [id]="'carModel_' + rowIndex" value={{rowData.model}}>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="carYear">Ano</label>
+                                    <input [readOnly]="true" type="text" class="form-control"
+                                        [id]="'carYear_' + rowIndex" value={{rowData.year}}>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="carColor">Cor</label>
+                                    <input [readOnly]="true" type="text" class="form-control"
+                                        [id]="'carColor_' + rowIndex" value={{rowData.color}}>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="carPlate">Placa</label>
+                                    <input [readOnly]="true" type="text" class="form-control"
+                                     [id]="'carPlate_' + rowIndex" value={{rowData.licensePlate}}>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td>Usário não possui nenhum carro no momento</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+    </form>
+
+</div>

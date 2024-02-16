@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    align-items: center;
+}
+.form-container{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    box-sizing: border-box;  
+}
+.form{
+    width: 400px;
+    height: 330px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    display: table;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.input-container{
+    height: 40px;
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+}
+
+.input{
+    background-color: #d4d4d4;
+    border: 0;
+    box-sizing: border-box;
+    color: #666;
+    font-size: 14px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px;
+    width: 100%;
+}
+
+button{
+    border:0;
+    background-color: #007bff;
+    box-sizing: border-box;
+    color:#eee;
+    font-size: 18px;
+    height: 40px;
+    text-align: center;
+    margin-top: 20px;
+    width:100%;
+    
+    &[disabled]{
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+}
+
+.msg{
+    padding-top:10px;
+    font-size: 15px;
+}
+
+.error{ color: rgb(216, 5, 5);}
+.success{ color:rgb(0, 54, 0);}
+.light{ color:white;}
+
+.link {
+    text-align: center;
+    text-decoration: none;
+    color: #007bff;
+    padding-top: 25px;
+    font-size: 16px;
+    display: block;
+}
+
+.link:hover{
+    text-decoration: underline;  
+}

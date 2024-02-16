@@ -1,0 +1,12 @@
+.btn-outline-warning:hover {
+    color: white;
+  }
+  
+  .custom-table th:first-child {
+    width: 75%;
+  }
+  
+  .custom-table th:last-child {
+    text-align: center;
+    width: 25%;
+  }

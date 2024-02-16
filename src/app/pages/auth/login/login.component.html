@@ -1,0 +1,20 @@
+<div class="form-container">
+    <div class="form">
+        <form [formGroup]="form" (ngSubmit)="login()" autocomplete="off">
+            <h1>Login</h1>
+            
+            <div class="input-container">
+                <input type="text" formControlName="login" name="login" class="input" placeholder="Login">
+            </div>
+            <app-form-field-error [form-control]="field['login']"></app-form-field-error>
+           
+            <div class="input-container">
+                <input type="password" formControlName="password" name="password" class="input" placeholder="Senha">
+            </div>
+            <app-form-field-error [form-control]="field['password']"></app-form-field-error>           
+
+            <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit" [disabled]="form.invalid">Entrar</button>
+            <a routerLink="/users" class="link">Esqueceu a senha? <br> Edite seu cadastro e altere a senha</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container">
+
+    <app-bread-crumb [items]="[{text: 'Carros', link: '/cars'}, {text: 'Formulário'}]">
+    </app-bread-crumb>
+
+    <app-page-header page-title="Carros" button-text=" Voltar" button-link="/cars" button-class="btn-info"
+        icon-class="bi bi-arrow-left-circle"></app-page-header>
+
+    <form [formGroup]="form" (submit)="submitForm()">
+        <div class="card">
+            <div class="card-header">
+                Informações do carro
+            </div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="model">Modelo</label>
+                        <input [readOnly]="currentAction == 'view'" type="text" class="form-control" id="model"
+                            formControlName="model">
+                        <app-form-field-error [form-control]="field['model']"></app-form-field-error>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="year">Ano</label>
+                        <input [readOnly]="currentAction == 'view'" type="text" class="form-control" id="year"
+                            formControlName="year" mask="0000" placeholder="2024">
+                        <app-form-field-error [form-control]="field['year']"></app-form-field-error>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="color">Cor</label>
+                        <input [readOnly]="currentAction == 'view'" type="text" class="form-control" id="color"
+                            formControlName="color">
+                        <app-form-field-error [form-control]="field['color']"></app-form-field-error>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="licensePlate">Placa</label>
+                        <input [readOnly]="currentAction == 'view'" type="text" class="form-control" id="licensePlate"
+                            formControlName="licensePlate" mask="SSS-0A00" [dropSpecialCharacters]="false"
+                            placeholder="TCE-2024 ou TCE-2A24">
+                        <app-form-field-error [form-control]="field['licensePlate']"></app-form-field-error>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <button *ngIf="currentAction != 'view'" [disabled]="submittingForm || form.invalid"
+            class="btn btn-primary btn-lg float-right mt-3"><i class="bi bi-floppy"></i> Salvar</button>
+
+    </form>
+</div>

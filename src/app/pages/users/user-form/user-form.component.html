@@ -1,0 +1,122 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="container">
+
+    <app-bread-crumb [items]="[{text: 'Usuários', link: '/users'}, {text: 'Formulário'}]">
+    </app-bread-crumb>
+
+    <app-page-header [page-title]="pageTitle" button-text=" Voltar" button-link="/users"
+        button-class="btn-info" icon-class="bi bi-arrow-left-circle"></app-page-header>
+
+    <form [formGroup]="form" (submit)="submitForm()">
+        <div class="card">
+            <div class="card-header">
+                Informações do usuário
+            </div>
+
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="firstName">Nome</label>
+                        <input [readOnly]="currentAction == 'view'" type="text" class="form-control" id="firstName"
+                            formControlName="firstName">
+                        <app-form-field-error [form-control]="field['firstName']"></app-form-field-error>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="lastName">Sobrenome</label>
+                        <input [readOnly]="currentAction == 'view'" type="text" class="form-control" id="lastName"
+                            formControlName="lastName">
+                        <app-form-field-error [form-control]="field['lastName']"></app-form-field-error>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="birthDate">Data de Nascimento</label>
+                        <p-calendar [class.calendar-disabled]="currentAction == 'view'" formControlName="birthDate"
+                            inputStyleClass="form-control" dataType="string" dateFormat="dd/mm/yy"
+                            [showButtonBar]="true"></p-calendar>
+                        <app-form-field-error [form-control]="field['birthDate']"></app-form-field-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="email">Email</label>
+                        <input [readOnly]="currentAction == 'view'" type="text" class="form-control" id="email"
+                            formControlName="email">
+                        <app-form-field-error [form-control]="field['email']"></app-form-field-error>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="phone">Celular</label>
+                        <input [readOnly]="currentAction == 'view'" type="text" class="form-control" id="phone"
+                            formControlName="phone" mask="(00)0 0000-0000" placeholder="(81) 9 9999-9999">
+                        <app-form-field-error [form-control]="field['phone']"></app-form-field-error>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="login">Login</label>
+                        <input [readOnly]="currentAction == 'view'" type="text" class="form-control" id="login"
+                            formControlName="login">
+                        <app-form-field-error [form-control]="field['login']"></app-form-field-error>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="password">Senha</label>
+                        <input [readOnly]="currentAction == 'view'" type="password" class="form-control" id="password"
+                            formControlName="password">
+                        <app-form-field-error [form-control]="field['password']"></app-form-field-error>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="confirmPassword">Confirmação de Senha</label>
+                        <input [readOnly]="currentAction == 'view'" type="password" class="form-control"
+                            id="confirmPassword" formControlName="confirmPassword">
+                        <app-form-field-error [form-control]="field['confirmPassword']"></app-form-field-error> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button *ngIf="currentAction != 'view'" [disabled]="submittingForm || form.invalid"
+            class="btn btn-primary btn-lg float-right mt-3"><i class="bi bi-floppy"></i> Salvar</button>
+
+        <div *ngIf="currentAction == 'view'" class="card mt-4">
+            <div class="card-header">
+                Carros do usuário
+            </div>
+            <div class="card-body">
+                <p-table [value]="resource.cars == undefined? []: resource.cars" [paginator]="true" [rows]="3">
+                    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                        <tr>
+                            <td class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="carModel">Modelo</label>
+                                    <input [readOnly]="currentAction == 'view'" type="text" class="form-control"
+                                        [id]="'carModel_' + rowIndex" value={{rowData.model}}>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="carYear">Ano</label>
+                                    <input [readOnly]="currentAction == 'view'" type="text" class="form-control"
+                                     [id]="'carYear_' + rowIndex" value={{rowData.year}}>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="carColor">Cor</label>
+                                    <input [readOnly]="currentAction == 'view'" type="text" class="form-control"
+                                        [id]="'carColor_' + rowIndex" value={{rowData.color}}>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="carPlate">Placa</label>
+                                    <input [readOnly]="currentAction == 'view'" type="text" class="form-control"
+                                     [id]="'carPlate_' + rowIndex" value={{rowData.licensePlate}}>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        <tr>
+                            <td>Usário não possui nenhum carro no momento</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+    </form>
+
+</div>
