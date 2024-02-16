@@ -137,7 +137,17 @@ export abstract class GenericFormComponent<T extends GenericModel>
   }
 
   protected actionsForError(error: any) {
-    toastr.error(error.error.message);
+    
+    if(error.statusText == 'Unknown Error') {
+      toastr.error("Falha ao conectar com o servidor")
+    }else if(error.status == '500'){
+      toastr.error("Falha interna do servidor")
+    }else if(error.status == '403' || error.status == '401') {
+      toastr.error("Unauthorized")
+    }else {
+      toastr.error(error.error.message)
+    }
+
     this.submittingForm = false;
   }
 
