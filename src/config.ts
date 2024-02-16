@@ -1,9 +1,9 @@
 export class Config {
     constructor(
-        public production_url = "",
+        public production_url = " https://pitang-tce-api-51bcd86fe773.herokuapp.com/api/",
         public development_url = "http://localhost:8080/api/",
 
-        private isProduction  = false,   
+        private isProduction  = true,   
     ){}
 
     apiPath(resource: string): string{
